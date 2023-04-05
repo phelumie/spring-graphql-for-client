@@ -110,3 +110,24 @@ In scenarios where we have to pass in parameters and make it dynamic,the below c
 
 ```
 
+In case we need to pass in headers we can:
+
+```
+HttpGraphQlClient.builder(webClient)
+                        .url(uri)
+                        .headers(header->{
+                            header.set("Content-Type","application/json");
+                        }).build().document(document)
+                .retrieve("continent")
+                .toEntity(Object.class);
+
+       
+```
+The webclient can be configured and  injected:
+
+```
+    @Bean
+    public WebClient webclient(){
+        return WebClient.builder().build();
+    }
+```
